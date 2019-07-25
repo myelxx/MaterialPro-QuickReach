@@ -9,13 +9,18 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/starter',
+        redirectTo: '/pages/login',
         pathMatch: 'full'
       },
       {
         path: 'material',
         loadChildren:
           './material-component/material.module#MaterialComponentsModule'
+      },
+      {
+        path: 'pages',
+        loadChildren:
+          './pages/pages.module#PagesModule'
       },
       {
         path: 'userlist',
@@ -33,6 +38,10 @@ export const AppRoutes: Routes = [
       {
         path: 'category',
         loadChildren: './category/category.module#CategoryModule'
+      },
+      {
+        path: 'settings',
+        loadChildren: './settings/settings.module#SettingsModule'
       },
       {
         path: 'icons',

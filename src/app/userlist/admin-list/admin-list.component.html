@@ -1,3 +1,71 @@
-<p>
-  admin-list works!
-</p>
+<!-- <div class="mat-elevation-z8">
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div fxFlex.gt-sm="100%" fxFlex="100">
+        <div fxFlex="25">
+          <h3>Adminstrator List</h3>
+        </div>
+        <div fxFlex.gt-lg="70" fxFlex.gt-xs="70" fxFlex="70">
+          <mat-form-field id="searchBar">
+            <input matInput  (keyup)="applyFilter()"  placeholder="Search for Adminstrators" [(ngModel)]="searchString">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div fxFlex>
+          <button id="add_product" color="primary" matTooltip="Add Adminstrator" mat-icon-button (click)="openDialog('Add',{})"
+            fxFlex.gt-lg="5" fxFlex.gt-xs="5" fxFlex="5">
+            <i class="fa fa-plus-circle fa-3x"></i>
+          </button>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="container text-center">
+  
+      <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
+  
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef class="text-center"> Date Registered </th>
+            <td mat-cell *matCellDef="let element"> {{element.dtCreated}} </td>
+          </ng-container>
+  
+        <ng-container matColumnDef="isActive">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-chip-list>
+              <mat-chip selected color="accent" *ngIf="element.isActive" disabled> &nbsp;Active&nbsp;&nbsp; </mat-chip>
+              <mat-chip color="warning" selected *ngIf="!element.isActive" disabled> Inactive </mat-chip>
+            </mat-chip-list>
+  
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+          <td mat-cell *matCellDef="let element" class="action-link">
+            <button color="primary" mat-icon-button matTooltip="Edit products" (click)="openDialog('Update',element)">
+              <i class="fa fa-edit fa-2x"></i>
+            </button> 
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div> -->

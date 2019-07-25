@@ -1,0 +1,27 @@
+  <div fxFlex.gt-lg="100" fxFlex.gt-xs="100" fxFlex="100">
+    <div class="row" fxFlex></div>
+    <div class="row" fxFlex="50">
+      <mat-card>
+        <div class="wrapper">
+          <div>
+            <h3>Login</h3>
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Enter your email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Enter your password" [formControl]="password" required>
+              <i class="fa fa-eye" matSuffix></i>
+              <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Login</button>
+            <a color="accent" href="pages/forgot-password"><small> Forgot Password? </small></a>
+            <br><br>
+            <small> Didn't have an account? </small>
+            <a color="accent" href="pages/register"><small> Sign up now! </small></a>
+        </div>
+      </mat-card>
+    </div>
+    <div class="row" fxFlex></div>
+  </div>

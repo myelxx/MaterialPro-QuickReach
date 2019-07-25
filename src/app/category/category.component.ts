@@ -10,6 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
+
 export class CategoryComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'status', 'action'];
   dataSource = new MatTableDataSource<CategoryData>(ELEMENT_DATA);

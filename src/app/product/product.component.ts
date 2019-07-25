@@ -27,13 +27,12 @@ const ELEMENT_DATA: ProductData[] = [
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
+
 export class ProductComponent  {
   displayedColumns: string[] = ['id', 'name', 'description', 'price', 'imgURL', 'isActive', 'action'];
   dataSource = ELEMENT_DATA;
   
   searchString: string = "";
-  disabled = false;
-  checked = false; 
   
   @ViewChild(MatTable) table: MatTable<any>;
 
