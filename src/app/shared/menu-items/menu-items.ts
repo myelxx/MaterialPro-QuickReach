@@ -27,48 +27,60 @@ export interface Menu {
 const MENUITEMS = [
   {
     state: 'starter',
-    name: 'Starter Page',
+    name: 'Home',
     type: 'link',
-    icon: 'content_copy'
+    icon: 'home'
   },
   {
     state: 'product',
     name: 'Product',
     type: 'link',
-    icon: 'content_copy'
+    icon: 'shopping_basket'
   },
   {
     state: 'category',
     name: 'Category',
     type: 'link',
-    icon: 'content_copy'
+    icon: 'loyalty'
   },
   {
-    state: 'material',
-    name: 'Material Ui',
+    state: 'userlist',
+    name: 'Userlist',
     type: 'sub',
-    icon: 'bubble_chart',
-    badge: [{ type: 'red', value: '17' }],
+    icon: 'people',
+    badge: [{ type: 'red', value: '3' }],
     children: [
-      { state: 'button', name: 'Buttons' },
-      { state: 'cards', name: 'Cards' },
-      { state: 'grid', name: 'Grid List' },
-      { state: 'lists', name: 'Lists' },
-      { state: 'menu', name: 'Menu' },
-      { state: 'tabs', name: 'Tabs' },
-      { state: 'stepper', name: 'Stepper' },
-      { state: 'expansion', name: 'Expansion Panel' },
-      { state: 'chips', name: 'Chips' },
-      { state: 'toolbar', name: 'Toolbar' },
-      { state: 'progress-snipper', name: 'Progress snipper' },
-      { state: 'progress', name: 'Progress Bar' },
-      { state: 'dialog', name: 'Dialog' },
-      { state: 'tooltip', name: 'Tooltip' },
-      { state: 'snackbar', name: 'Snackbar' },
-      { state: 'slider', name: 'Slider' },
-      { state: 'slide-toggle', name: 'Slide Toggle' }
+      { state: 'customer', name: 'Customer' },
+      { state: 'vendor', name: 'Vendors' },
+      { state: 'admin', name: 'Administrator' }
     ]
-  }
+   },
+  // {
+  //   state: 'material',
+  //   name: 'Material Ui',
+  //   type: 'sub',
+  //   icon: 'bubble_chart',
+  //   badge: [{ type: 'red', value: '17' }],
+  //   children: [
+  //     { state: 'button', name: 'Buttons' },
+  //     { state: 'cards', name: 'Cards' },
+  //     { state: 'grid', name: 'Grid List' },
+  //     { state: 'lists', name: 'Lists' },
+  //     { state: 'menu', name: 'Menu' },
+  //     { state: 'tabs', name: 'Tabs' },
+  //     { state: 'stepper', name: 'Stepper' },
+  //     { state: 'expansion', name: 'Expansion Panel' },
+  //     { state: 'chips', name: 'Chips' },
+  //     { state: 'toolbar', name: 'Toolbar' },
+  //     { state: 'progress-snipper', name: 'Progress snipper' },
+  //     { state: 'progress', name: 'Progress Bar' },
+  //     { state: 'dialog', name: 'Dialog' },
+  //     { state: 'tooltip', name: 'Tooltip' },
+  //     { state: 'snackbar', name: 'Snackbar' },
+  //     { state: 'slider', name: 'Slider' },
+  //     { state: 'slide-toggle', name: 'Slide Toggle' }
+  //   ]
+  // }
 ];
 
 @Injectable()

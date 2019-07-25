@@ -7,3 +7,40 @@
     width: 100%;
   }
   
+  table {
+    width: 100%;
+  }
+
+  #searchBar {
+    width: 80%;
+    font-size: 0.8em;
+    padding: 2%;
+    float: right;
+  }
+
+  #add_product {
+    padding: 2%;
+    float: right;
+  }
+
+  h3 {
+    padding: 2%;
+    margin-left: 2%;
+  }
+
+  .action {
+    width: 15%;
+  }
+
+  .id, .status {
+    width: 10%;
+  }
+
+  .name {
+    width: 30%;
+  }
+
+  mat-chip {
+    padding: 8%;
+
+  }

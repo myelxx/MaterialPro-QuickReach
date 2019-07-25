@@ -1,8 +1,7 @@
 <!-- ============================================================== -->
 <!-- Simple four boxes Row -->
 <!-- ============================================================== -->
-<div fxLayout="row" fxLayoutWrap="wrap">
-    <!-- column -->
+<!-- <div fxLayout="row" fxLayoutWrap="wrap">
     <div fxFlex.gt-lg="100" fxFlex.gt-xs="100" fxFlex="100">
         <mat-card>
             <div class="row" fxFlex="15">
@@ -21,9 +20,7 @@
                     Subtitle
                 </mat-card-subtitle>
                 <mat-card-content>
-                    <!-- Row -->
                     <div fxLayout="row" fxLayoutWrap="wrap">
-                        <!-- column -->
                         <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
                             Starter Page
                         </div>
@@ -35,7 +32,6 @@
 </div>
 
 <div fxLayout="row" fxLayoutWrap="wrap">
-    <!-- column -->
     <div fxFlex.gt-lg="33" fxFlex.gt-xs="100" fxFlex.gt-sm="33" fxFlex="33">
         <mat-card>
             <div class="row" fxFlex="15">
@@ -54,39 +50,7 @@
                     Subtitle
                 </mat-card-subtitle>
                 <mat-card-content>
-                    <!-- Row -->
                     <div fxLayout="row" fxLayoutWrap="wrap">
-                        <!-- column -->
-                        <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                            Starter Page
-                        </div>
-                    </div>
-                </mat-card-content>
-            </div>
-        </mat-card>
-    </div>
-    <!-- column -->
-    <div fxFlex.gt-lg="33" fxFlex.gt-xs="100" fxFlex.gt-sm="33" fxFlex="33">
-        <mat-card>
-            <div class="row" fxFlex="15">
-                Image
-            </div>
-            <div fxFlex></div>
-            <div fxFlex="80">
-                <mat-card-title class="text-center">
-                    <div class="row">
-                        <div fxFlex="10">
-                            Title
-                        </div>
-                    </div>
-                </mat-card-title>
-                <mat-card-subtitle class="text-center">
-                    Subtitle
-                </mat-card-subtitle>
-                <mat-card-content>
-                    <!-- Row -->
-                    <div fxLayout="row" fxLayoutWrap="wrap">
-                        <!-- column -->
                         <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
                             Starter Page
                         </div>
@@ -113,9 +77,7 @@
                     Subtitle
                 </mat-card-subtitle>
                 <mat-card-content>
-                    <!-- Row -->
                     <div fxLayout="row" fxLayoutWrap="wrap">
-                        <!-- column -->
                         <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
                             Starter Page
                         </div>
@@ -124,9 +86,36 @@
             </div>
         </mat-card>
     </div>
-</div>
+    <div fxFlex.gt-lg="33" fxFlex.gt-xs="100" fxFlex.gt-sm="33" fxFlex="33">
+        <mat-card>
+            <div class="row" fxFlex="15">
+                Image
+            </div>
+            <div fxFlex></div>
+            <div fxFlex="80">
+                <mat-card-title class="text-center">
+                    <div class="row">
+                        <div fxFlex="10">
+                            Title
+                        </div>
+                    </div>
+                </mat-card-title>
+                <mat-card-subtitle class="text-center">
+                    Subtitle
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <div fxLayout="row" fxLayoutWrap="wrap">
+                        <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                            Starter Page
+                        </div>
+                    </div>
+                </mat-card-content>
+            </div>
+        </mat-card>
+    </div>
+</div> -->
 
-<div fxLayout="row" fxLayoutWrap="wrap">
+<div id="aboveTable" fxLayout="row" fxLayoutWrap="wrap">
     <div fxFlex.gt-sm="100%" fxFlex="100">
         <mat-card>
             <mat-card-content>
@@ -140,6 +129,32 @@
 
                         <div fxLayout="row" fxLayoutWrap="wrap">
                             <!-- column -->
+                            <div fxFlex.gt-lg="100" fxFlex.gt-xs="100" fxFlex="100">
+                                <mat-card>
+                                    <div fxFlex="80">
+                                        <mat-card-content>
+                                            <!-- Row -->
+                                            <div fxLayout="row" fxLayoutWrap="wrap">
+                                                <!-- column -->
+                                                <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                                                    <img
+                                                        src="https://media.nngroup.com/media/editor/2017/06/06/thedesignwork.png">
+                                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+                                </mat-card>
+                            </div>
+                           
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="fa fa-shopping-bag fa-2x"></i>&nbsp;Product
+                        </ng-template>
+                        <div fxLayout="row" fxLayoutWrap="wrap">
+                            <!-- column -->
                             <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
                                 <mat-card>
                                     <div fxFlex="80">
@@ -148,7 +163,8 @@
                                             <div fxLayout="row" fxLayoutWrap="wrap">
                                                 <!-- column -->
                                                 <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                    Starter Page
+                                                    <img
+                                                        src="https://media.nngroup.com/media/editor/2017/06/06/thedesignwork.png">
                                                 </div>
                                             </div>
                                         </mat-card-content>
@@ -191,116 +207,61 @@
 
                     <mat-tab>
                         <ng-template mat-tab-label>
-                            <i class="fa fa-shopping-bag fa-2x"></i>&nbsp;Product
-                        </ng-template>
-                        <div fxLayout="row" fxLayoutWrap="wrap">
-                                <!-- column -->
-                                <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
-                                    <mat-card>
-                                        <div fxFlex="80">
-                                            <mat-card-content>
-                                                <!-- Row -->
-                                                <div fxLayout="row" fxLayoutWrap="wrap">
-                                                    <!-- column -->
-                                                    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                        Starter Page
-                                                    </div>
-                                                </div>
-                                            </mat-card-content>
-                                        </div>
-                                    </mat-card>
-                                </div>
-                                <!-- column -->
-                                <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
-                                    <mat-card>
-                                        <div fxFlex="80">
-                                            <mat-card-content>
-                                                <!-- Row -->
-                                                <div fxLayout="row" fxLayoutWrap="wrap">
-                                                    <!-- column -->
-                                                    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                        Starter Page
-                                                    </div>
-                                                </div>
-                                            </mat-card-content>
-                                        </div>
-                                    </mat-card>
-                                </div>
-                                <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
-                                    <mat-card>
-                                        <div fxFlex="80">
-                                            <mat-card-content>
-                                                <!-- Row -->
-                                                <div fxLayout="row" fxLayoutWrap="wrap">
-                                                    <!-- column -->
-                                                    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                        Starter Page
-                                                    </div>
-                                                </div>
-                                            </mat-card-content>
-                                        </div>
-                                    </mat-card>
-                                </div>
-                            </div>
-                        </mat-tab>
-
-                    <mat-tab>
-                        <ng-template mat-tab-label>
                             <i class="fa fa-user fa-2x"></i>&nbsp; Admin
                         </ng-template>
                         <div fxLayout="row" fxLayoutWrap="wrap">
-                                <!-- column -->
-                                <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
-                                    <mat-card>
-                                        <div fxFlex="80">
-                                            <mat-card-content>
-                                                <!-- Row -->
-                                                <div fxLayout="row" fxLayoutWrap="wrap">
-                                                    <!-- column -->
-                                                    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                        Starter Page
-                                                    </div>
+                            <!-- column -->
+                            <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
+                                <mat-card>
+                                    <div fxFlex="80">
+                                        <mat-card-content>
+                                            <!-- Row -->
+                                            <div fxLayout="row" fxLayoutWrap="wrap">
+                                                <!-- column -->
+                                                <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                                                    <img
+                                                        src="https://media.nngroup.com/media/editor/2017/06/06/thedesignwork.png">
                                                 </div>
-                                            </mat-card-content>
-                                        </div>
-                                    </mat-card>
-                                </div>
-                                <!-- column -->
-                                <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
-                                    <mat-card>
-                                        <div fxFlex="80">
-                                            <mat-card-content>
-                                                <!-- Row -->
-                                                <div fxLayout="row" fxLayoutWrap="wrap">
-                                                    <!-- column -->
-                                                    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                        Starter Page
-                                                    </div>
-                                                </div>
-                                            </mat-card-content>
-                                        </div>
-                                    </mat-card>
-                                </div>
-                                <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
-                                    <mat-card>
-                                        <div fxFlex="80">
-                                            <mat-card-content>
-                                                <!-- Row -->
-                                                <div fxLayout="row" fxLayoutWrap="wrap">
-                                                    <!-- column -->
-                                                    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-                                                        Starter Page
-                                                    </div>
-                                                </div>
-                                            </mat-card-content>
-                                        </div>
-                                    </mat-card>
-                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+                                </mat-card>
                             </div>
-                        </mat-tab>
+                            <!-- column -->
+                            <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
+                                <mat-card>
+                                    <div fxFlex="80">
+                                        <mat-card-content>
+                                            <!-- Row -->
+                                            <div fxLayout="row" fxLayoutWrap="wrap">
+                                                <!-- column -->
+                                                <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                                                    Starter Page
+                                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+                                </mat-card>
+                            </div>
+                            <div fxFlex.gt-lg="33" fxFlex.gt-xs="33" fxFlex="33">
+                                <mat-card>
+                                    <div fxFlex="80">
+                                        <mat-card-content>
+                                            <!-- Row -->
+                                            <div fxLayout="row" fxLayoutWrap="wrap">
+                                                <!-- column -->
+                                                <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                                                    Starter Page
+                                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </mat-tab>
                 </mat-tab-group>
             </mat-card-content>
         </mat-card>
     </div>
-</div> 
-
+</div>

@@ -1,9 +1,17 @@
 .example-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
   
   .example-container > * {
     width: 100%;
   }
-  
+
+  button {
+    float: right;
+  }
+
+  button.btn {
+    width: 100%;
+  }

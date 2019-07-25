@@ -1,5 +1,72 @@
+<div class="mat-elevation-z8">
+  <div fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex.gt-sm="100%" fxFlex="100">
+      <div fxFlex="25">
+        <h3 >Category</h3>
 
-<button id="add_product" mat-icon-button (click)="openDialog('Add',{})">
-    <i class="fa fa-plus-circle fa-3x"></i>
-</button>
-    
+      </div>
+      <div fxFlex.gt-lg="70" fxFlex.gt-xs="70" fxFlex="70">
+        <mat-form-field id="searchBar">
+          <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div fxFlex>
+        <button id="add_product" color="primary"  matTooltip="Add Category" mat-icon-button (click)="openDialog('AddCat',{})"
+          fxFlex.gt-lg="5" fxFlex.gt-xs="5" fxFlex="5">
+          <i class="fa fa-plus-circle fa-3x"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th class="id" mat-header-cell *matHeaderCellDef> Id </th>
+      <td class="id" mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th class="name" mat-header-cell *matHeaderCellDef> Name </th>
+      <td class="name" mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th class="description" mat-header-cell *matHeaderCellDef> Description </th>
+      <td class="description" mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th class="status" mat-header-cell *matHeaderCellDef> Status </th>
+      <td class="status" mat-cell *matCellDef="let element">
+        <mat-chip-list>
+          <mat-chip color="accent" selected disabled *ngIf="element.status"> &nbsp;Active&nbsp;&nbsp; </mat-chip>
+          <mat-chip color="warning" selected disabled *ngIf="!element.status"> Inactive </mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th class="action" mat-header-cell *matHeaderCellDef> Action </th>
+      <td class="action" mat-cell *matCellDef="let element">
+        <button color="primary" mat-icon-button matTooltip="View Sub Categories" (click)="openDialog('Update',element)">
+          <i class="fa fa-bars fa-2x"></i>
+        </button>
+        <button color="primary" mat-icon-button matTooltip="Add Sub Category" (click)="openDialog('AddSub',element)">
+          <i class="fa fa-plus fa-2x"></i>
+        </button>
+        <button color="primary" mat-icon-button matTooltip="Edit Category" (click)="openDialog('Edit',element)">
+          <i class="fa fa-pencil fa-2x"></i>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+

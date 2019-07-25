@@ -60,7 +60,16 @@ File: scss
 	@import 'colors/dark'; 
   	@include angular-material-theme($dark-theme); 
 }
+
+
+.dark-green { 
+	background-color: #316e40 !important;
+}
   
+
+.m-blue {
+	background-color: #193145;
+}
 
 $custom-typography: mat-typography-config( 
   $font-family: 'Poppins'

@@ -6,13 +6,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CategoryComponent } from './category.component';
 import { CategoryRoutes } from './category.routing';
 import { DialogComponent } from './dialog/dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     DemoMaterialModule,
     FlexLayoutModule,
-    RouterModule.forChild(CategoryRoutes)
+    RouterModule.forChild(CategoryRoutes),
+    FormsModule
   ],
   declarations: [CategoryComponent, DialogComponent],
   entryComponents: [DialogComponent]

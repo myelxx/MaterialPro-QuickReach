@@ -1,7 +1,7 @@
 <!-- ============================================================== -->
 <!-- Notification - style you can find in header.scss -->
 <!-- ============================================================== -->
-<button [matMenuTriggerFor]="notification" mat-icon-button class="m-r-10">
+<!-- <button [matMenuTriggerFor]="notification" mat-icon-button class="m-r-10">
     <mat-icon>message</mat-icon>
     <div class="notify">
         <span class="heartbit"></span>
@@ -17,7 +17,6 @@
             <li>
                 <div class="message-center">
 
-                    <!-- Message -->
                     <a href="#" *ngFor="let notification of notifications">
                         <div class="round {{notification.round}}">
                             <i class="{{notification.icon}}"></i>
@@ -35,11 +34,11 @@
 
         </ul>
     </div>
-</mat-menu>
+</mat-menu> -->
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
-<button [matMenuTriggerFor]="message" mat-icon-button class="m-r-10">
+<!-- <button [matMenuTriggerFor]="message" mat-icon-button class="m-r-10">
     <mat-icon>email</mat-icon>
     <div class="notify">
         <span class="heartbit"></span>
@@ -55,7 +54,6 @@
             <li>
                 <div class="message-center">
 
-                    <!-- Message -->
                     <a href="#" *ngFor="let mymessage of mymessages">
                         <div class="user-img">
                             <img src="{{mymessage.useravatar}}" alt="user" class="img-circle" width="40">
@@ -67,18 +65,18 @@
                             <span class="time">{{mymessage.time}}</span>
                         </div>
                     </a>
-                    <!-- Message -->
 
                 </div>
             </li>
         </ul>
     </div>
-</mat-menu>
+</mat-menu> -->
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
 <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-10">
-    <img src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button>
+    <img src="assets/images/users/user.png" alt="user"   class="profile-pic"> 
+</button>
 <mat-menu #profile="matMenu" class="mymegamenu">
     <button mat-menu-item>
         <mat-icon>settings</mat-icon> Settings </button>

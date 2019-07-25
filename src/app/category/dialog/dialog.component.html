@@ -1,20 +1,32 @@
-<button mat-icon-button>
-    <i class="fa fa-close"></i>
-</button>
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex>
+    <h4> Add Category </h4>
+  </div>
+  <div fxFlex="5">
+    <button (click)="onNoClick()" mat-icon-button aria-label="Example icon-button with a heart icon"
+      (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
 
 <div class="example-container">
-  <h4> {{mode}} Product </h4>
   <mat-form-field>
-    <input matInput placeholder="Input">
+    <input matInput placeholder="Name" #name>
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
+    <textarea matInput placeholder="Desciption" #description></textarea>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutWrap="wrap">
+    <div class="row" fxFlex>
+      <button class="btn" (click)="openSnackBar('Successfully added category: ', name.value)" mat-flat-button
+        color="primary" fxFlex>Save</button>
+    </div>
+    <div class="row" fxFlex>
+      <button class="btn" class="btn" (click)="onNoClick()" mat-flat-button color="">Cancel</button>
+    </div>
+  </div>
+
 </div>

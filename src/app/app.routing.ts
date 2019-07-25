@@ -18,6 +18,11 @@ export const AppRoutes: Routes = [
           './material-component/material.module#MaterialComponentsModule'
       },
       {
+        path: 'userlist',
+        loadChildren:
+          './userlist/userlist.module#UserlistModule'
+      },
+      {
         path: 'starter',
         loadChildren: './starter/starter.module#StarterModule'
       },

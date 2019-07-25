@@ -1,0 +1,43 @@
+<!-- dialog-box.component.html -->
+<div fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex>
+        <h1 mat-dialog-title>{{action}} Product</h1>
+    </div>
+    <div fxFlex="5">
+        <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="closeDialog()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+<div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+        <mat-form-field>
+            <input placeholder="Name" matInput [(ngModel)]="local_data.name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input placeholder="Description" matInput [(ngModel)]="local_data.description" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input placeholder="Price" matInput [(ngModel)]="local_data.price" required>
+            <span matPrefix>Php.&nbsp;</span>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input  placeholder="Image URL" matInput [(ngModel)]="local_data.imgURL" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input placeholder="Status" matInput [(ngModel)]="local_data.isActive" required>
+        </mat-form-field>
+
+
+    </div>
+
+    <ng-template #elseTemplate>
+        Sure to delete <b>{{local_data.name}}</b>?
+    </ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button type="button" (click)="doAction()" mat-flat-button color="primary">{{action}}</button>
+    <button mat-button (click)="closeDialog()" color="">Cancel</button>
+</div>
