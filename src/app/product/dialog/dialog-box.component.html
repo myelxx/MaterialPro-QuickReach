@@ -22,14 +22,20 @@
             <input placeholder="Price" matInput [(ngModel)]="local_data.price" required>
             <span matPrefix>Php.&nbsp;</span>
         </mat-form-field>
-        
+
         <mat-form-field>
-            <input  placeholder="Image URL" matInput [(ngModel)]="local_data.imgURL" required>
+            <input placeholder="Image URL" matInput [(ngModel)]="local_data.imgURL" required>
         </mat-form-field>
         <mat-form-field>
             <input placeholder="Status" matInput [(ngModel)]="local_data.isActive" required>
         </mat-form-field>
 
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select [formControl]="category" multiple>
+                <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+            </mat-select>
+        </mat-form-field>
 
     </div>
 

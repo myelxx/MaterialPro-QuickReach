@@ -3,6 +3,7 @@ import { Component, Inject, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MAT_SNACK_BAR_DATA} from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 export interface ProductData {
     name: string;
@@ -22,6 +23,9 @@ export class DialogBoxComponent {
  
   action:string;
   local_data:any;
+
+  category = new FormControl();
+  categoryList: string[] = ['Shoes', 'Shirt', 'Skirt', "Women's Wear", "Men's Wear", 'School Supplies'];
 
  
   constructor(private _snackBar: MatSnackBar,

@@ -7,6 +7,7 @@ import { ProductComponent } from './product.component';
 import { ProductRoutes } from './product.routing';
 import { DialogBoxComponent } from './dialog/dialog-box.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     DemoMaterialModule,
     FlexLayoutModule,
     RouterModule.forChild(ProductRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [ProductComponent, DialogBoxComponent],
   entryComponents: [DialogBoxComponent]
