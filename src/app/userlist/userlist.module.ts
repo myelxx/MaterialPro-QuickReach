@@ -15,6 +15,10 @@ import { AdminListComponent } from './admin-list/admin-list.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
 
+import { AdminDialogComponent } from './admin-list/dialog/admin-dialog.component';
+import { VendorDialogComponent } from './vendor-list/dialog/vendor-dialog.component';
+import { CustomerDialogComponent } from './customer-list/dialog/customer-dialog.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +34,15 @@ import { VendorListComponent } from './vendor-list/vendor-list.component';
   declarations: [
     AdminListComponent,
     CustomerListComponent,
-    VendorListComponent
+    VendorListComponent,
+    AdminDialogComponent,
+    VendorDialogComponent,
+    CustomerDialogComponent
+  ],
+  entryComponents: [
+    AdminDialogComponent,
+    VendorDialogComponent,
+    CustomerDialogComponent
   ]
 })
 export class UserlistModule { }

@@ -1,3 +1,59 @@
-<p>
-  settings works!
-</p>
+<mat-card>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Change Password
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <input matInput placeholder="Current Password">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="New Password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Confirm New Password">
+      </mat-form-field>
+      
+      <button mat-flat-button (click)="updatePassword()">Save Changes</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Update Account Details
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      
+      <mat-form-field>
+        <input matInput placeholder="Name">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Phone Number" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Birthdate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Address">
+      </mat-form-field>
+
+      <button mat-flat-button (click)="updateAccount()" >Save Changes</button>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+</mat-card>

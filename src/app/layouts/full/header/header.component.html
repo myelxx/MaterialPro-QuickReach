@@ -75,12 +75,17 @@
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
 <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-10">
-    <img src="assets/images/users/user.png" alt="user"   class="profile-pic"> 
+    <img src="assets/images/users/user.png" alt="user" class="profile-pic">
 </button>
 <mat-menu #profile="matMenu" class="mymegamenu">
-
+    <a href="settings">
     <button mat-menu-item routerLink="settings">
-        <mat-icon>settings</mat-icon> Settings </button>
-    <button mat-menu-item>
-        <mat-icon>exit_to_app</mat-icon> Sign Out </button>
+        <mat-icon>settings</mat-icon> Settings
+    </button>
+    </a>
+    <a href="pages/login">
+        <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon> Sign Out
+        </button>
+    </a>
 </mat-menu>

@@ -1,0 +1,32 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex>
+    <h4> Add Vendor </h4>
+  </div>
+  <div fxFlex="5">
+    <button (click)="onNoClick()" mat-icon-button aria-label="Example icon-button with a heart icon"
+      (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" #name>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Desciption" #description></textarea>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutWrap="wrap">
+    <div class="row" fxFlex>
+      <button class="btn" (click)="saveDetails()" mat-flat-button
+        color="primary" fxFlex>Save</button>
+    </div>
+    <div class="row" fxFlex>
+      <button class="btn" class="btn" (click)="onNoClick()" mat-flat-button color="">Cancel</button>
+    </div>
+  </div>
+
+</div>

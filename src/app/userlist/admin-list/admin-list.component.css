@@ -1,7 +1,3 @@
-table {
-    width: 100%;
-}
-
 .example-container {
     display: flex;
     flex-direction: column;
@@ -11,6 +7,9 @@ table {
     width: 100%;
   }
   
+  table {
+    width: 100%;
+  }
 
   #searchBar {
     width: 80%;
@@ -20,7 +19,7 @@ table {
   }
 
   #add_product {
-    padding: 5%;
+    padding: 2%;
     float: right;
   }
 
@@ -44,9 +43,4 @@ table {
   mat-chip {
     padding: 8%;
 
-  }
-
-  img {
-    width: auto;
-    height: 10%;
   }
