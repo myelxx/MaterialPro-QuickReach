@@ -51,16 +51,16 @@
     <ng-container matColumnDef="action">
       <th class="action" mat-header-cell *matHeaderCellDef> Action </th>
       <td class="action" mat-cell *matCellDef="let item">
-        <button color="basic" mat-icon-button matTooltip="View Sub Categories" (click)="openDialog('View Sub',item)">
+        <button color="basic" mat-mini-fab color="primary" matTooltip="View Sub Categories" (click)="openDialog('View Sub',item)">
           <i class="fa fa-bars fa-2x"></i>
         </button>
-        <button color="accent" mat-icon-button matTooltip="Add Sub Category" (click)="openDialog('AddSub',item)">
+        <button color="accent" mat-mini-fab color="primary"n matTooltip="Add Sub Category" (click)="openDialog('AddSub',item)">
           <i class="fa fa-plus fa-2x"></i>
         </button>
-        <button color="primary" mat-icon-button matTooltip="Update Category" (click)="openDialog('Update',item)">
+        <button color="primary" mat-mini-fab color="primary" matTooltip="Update Category" (click)="openDialog('Update',item)">
           <i class="fa fa-pencil fa-2x"></i>
         </button>
-        <button color="warn" mat-icon-button matTooltip="Delete Category" (click)="openDialog('Delete',item)">
+        <button color="warn" mat-mini-fab color="primary" matTooltip="Delete Category" (click)="openDialog('Delete',item)">
           <i class="fa fa-trash fa-2x"></i>
         </button>
 
@@ -71,5 +71,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[10, 20, 50, 10]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 20, 50, 5]" showFirstLastButtons></mat-paginator>
 </div>

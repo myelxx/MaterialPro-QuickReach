@@ -1,7 +1,7 @@
 <!-- dialog-box.component.html -->
 <div fxLayout="row" fxLayoutWrap="wrap">
     <div fxFlex>
-        <h1 mat-dialog-title>{{action}} Product</h1>
+        <h1 mat-dialog-title>{{mode}} Product</h1>
     </div>
     <div fxFlex="5">
         <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="closeDialog()">
@@ -9,41 +9,61 @@
         </button>
     </div>
 </div>
-<div mat-dialog-content>
-    <div *ngIf="action != 'Delete'; else elseTemplate">
-        <mat-form-field>
-            <input placeholder="Name" matInput [(ngModel)]="local_data.name" required>
-        </mat-form-field>
-        <mat-form-field>
-            <input placeholder="Description" matInput [(ngModel)]="local_data.description" required>
-        </mat-form-field>
 
-        <mat-form-field>
-            <input placeholder="Price" matInput [(ngModel)]="local_data.price" required>
-            <span matPrefix>Php.&nbsp;</span>
-        </mat-form-field>
+<div class="example-container" *ngIf="isVisible==1">
+    <div mat-dialog-content>
+        <div *ngIf="action != 'Delete'; else elseTemplate">
+            <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+                <div *ngIf="isVisibleId">
+                    <mat-form-field>
+                        <input matInput formControlName="id" placeholder="Id">
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <input placeholder="Name" matInput formControlName="name" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input placeholder="Description" matInput formControlName="description" required>
+                </mat-form-field>
 
-        <mat-form-field>
-            <input placeholder="Image URL" matInput [(ngModel)]="local_data.imgURL" required>
-        </mat-form-field>
-        <mat-form-field>
-            <input placeholder="Status" matInput [(ngModel)]="local_data.isActive" required>
-        </mat-form-field>
+                <mat-form-field>
+                    <input placeholder="Price" matInput formControlName="price" required>
+                    <span matPrefix>Php.&nbsp;</span>
+                </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Category</mat-label>
-            <mat-select [formControl]="category" multiple>
-                <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+                <mat-form-field>
+                    <input placeholder="Image URL" matInput formControlName="imgURL" required>
+                </mat-form-field>
 
+                <span>Status </span>
+                <mat-slide-toggle color="primary" (click)="slideToggle()" [checked]="product.isActive">
+                    <span *ngIf="isActive">Active</span>
+                    <span *ngIf="!isActive">Inactive</span>
+                </mat-slide-toggle>
+                <br><br>
+
+                <mat-form-field>
+                    <mat-label>Category</mat-label>
+                    <mat-select [formControl]="category" multiple>
+                        <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
     </div>
-
-    <ng-template #elseTemplate>
-        Sure to delete <b>{{local_data.name}}</b>?
-    </ng-template>
+    <div mat-dialog-actions>
+        <button mat-button type="button" (click)="submitForm()" mat-flat-button color="primary">{{mode}}</button>
+        <button mat-button (click)="closeDialog()" color="">Cancel</button>
+    </div>
 </div>
-<div mat-dialog-actions>
-    <button mat-button type="button" (click)="doAction()" mat-flat-button color="primary">{{action}}</button>
-    <button mat-button (click)="closeDialog()" color="">Cancel</button>
+<div class="example-container" *ngIf="isVisible==2">
+    <h5> Do you want to delete <strong> {{product.name}} </strong>?</h5>
+    <div fxLayout="row" fxLayoutWrap="wrap">
+        <div class="row" fxFlex>
+            <button (click)="deleteProduct()" mat-flat-button color="primary" fxFlex>Yes</button>
+        </div>
+        <div class="row" fxFlex>
+            <button class="btn" (click)="closeDialog()" mat-flat-button color="">Cancel</button>
+        </div>
+    </div>
 </div>

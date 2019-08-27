@@ -18,7 +18,6 @@
       </mat-form-field>
     </div>
 
-
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Name" #name>
     </mat-form-field>
@@ -28,7 +27,7 @@
     </mat-form-field>
 
     <span>Status </span>
-    <mat-slide-toggle color="primary" (click)="slideToggle()"[checked]="category.isActive">
+    <mat-slide-toggle color="primary" (click)="slideToggle()" [checked]="category.isActive">
       <span *ngIf="isActive">Active</span>
       <span *ngIf="!isActive">Inactive</span>
     </mat-slide-toggle>
@@ -46,7 +45,7 @@
 </div>
 
 <div class="example-container" *ngIf="isVisible==2">
-  <h5> Do you want to delete this? </h5>
+  <h5> Do you want to delete <strong> {{product.name}} </strong>? </h5>
   <div fxLayout="row" fxLayoutWrap="wrap">
     <div class="row" fxFlex>
       <button (click)="deleteCategory()" mat-flat-button color="primary" fxFlex>Yes</button>
@@ -59,19 +58,12 @@
 
 <div class="example-container" *ngIf="isVisible==3">
   <mat-list>
-    <mat-list-item>Sub Category 1</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Sub Category 2</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Sub Category 3</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Sub Category 4</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Sub Category 5</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Sub Category 6</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Sub Category 7</mat-list-item>
+    <div *ngFor="let t of subCategory">
+      <mat-list-item>
+        {{ t.childCategoryID }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
   </mat-list>
 </div>
 
@@ -80,9 +72,11 @@
     <div fxFlex.gt-lg="100" fxFlex.gt-xs="100" fxFlex="100">
       <div class="row" fxFlex="5"></div>
       <div class="row" fxFlex="43">
-        <mat-form-field>
-          <input matInput formControlName="sub_id" placeholder="Enter Category ID">
-        </mat-form-field>
+        <form [formGroup]="subCategoryForm" (ngSubmit)="submitForm()">
+          <mat-form-field>
+            <input matInput formControlName="sub_id" placeholder="Enter Category ID">
+          </mat-form-field>
+        </form>
       </div>
       <div class="row" fxFlex></div>
       <div class="row" fxFlex="43">
@@ -96,12 +90,12 @@
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput  placeholder="Desciption"></textarea>
+    <textarea matInput placeholder="Desciption"></textarea>
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutWrap="wrap">
     <div class="row" fxFlex>
-      <button type="submit"  mat-flat-button color="primary" fxFlex>{{mode}}</button>
+      <button type="submit" mat-flat-button color="primary" fxFlex>{{mode}}</button>
     </div>
     <div class="row" fxFlex>
       <button class="btn" (click)="onNoClick()" mat-flat-button color="">Cancel</button>

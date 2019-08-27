@@ -18,6 +18,11 @@ export class CategoryService {
       catchError(this.errorHandler));
    
   }
+  
+  getSubCategories(id: number): Observable<any[]> {
+    return this.http.get<any[]>(this.url+'/'+id+'/sub').pipe(
+      catchError(this.errorHandler));
+  }
 
   addCategory(item: any): Observable<any[]> {
     return this.http.post<any[]>(this.url, item).pipe(
@@ -42,3 +47,18 @@ export class CategoryService {
     return throwError(error.message || "Server Error")
   }
 }
+
+export interface CategoryData {
+  name: string;
+  id: number;
+  description: string;
+  isActive: boolean;
+}
+
+export interface SubCategoryData {
+  id: number;
+  name: string;
+  ParentCategoryID: string;
+  ChildCategoryID: string;
+}
+

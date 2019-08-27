@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from '../category.service';
 
@@ -9,19 +9,30 @@ import { CategoryService } from '../category.service';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css']
 })
+
 export class DialogComponent implements OnInit {
   errorMsg: string;
   mode: string = "Create";
 
   local_data: any;
+  action: string;
 
+  subCategoryForm: FormGroup;
   categoryForm: FormGroup;
   categoryAdd: any = {};
+
+  subCategory: any = [];
+  categoryList: string[] = ['Shoes', 'Shirt', 'Skirt', "Women's Wear", "Men's Wear", 'School Supplies'];
+
+  productForm: FormGroup;
+  productAdd: any = {};
   isVisible: number = 1;
   isVisibleId: boolean = true;
 
   status: string = "";
-  isActive: boolean = true; 
+  isActive: boolean = true;
+
+  searchString: string = "";
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, private _snackBar: MatSnackBar,
     private _quickreachService: CategoryService, private fb: FormBuilder, @Optional() @Inject(MAT_DIALOG_DATA) public category: any) {
@@ -29,6 +40,7 @@ export class DialogComponent implements OnInit {
     this.local_data = { ...category };
     this.mode = this.local_data.action;
 
+                                                       
     if (this.local_data.action == "Create") {
       this.initCategoryForm(true);
       this.isVisibleId = false;
@@ -41,16 +53,17 @@ export class DialogComponent implements OnInit {
       this.isActive = this.category.isActive;
     } else if (this.local_data.action == "View Sub") {
       this.isVisible = 3;
+      this.displaySubCategory(category.id);
     } else if (this.local_data.action == "Delete") {
       this.isVisible = 2;
     } else {
       this.initCategoryForm(true);
     }
 
-    if(this.category.isActive){
-      this. status = "Active"
+    if (this.category.isActive) {
+      this.status = "Active"
     } else {
-      this. status = "Inactive"
+      this.status = "Inactive"
     }
   }
 
@@ -60,11 +73,13 @@ export class DialogComponent implements OnInit {
     });
   }
 
+
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  slideToggle(){
+  slideToggle() {
     this.isActive = !this.isActive;
   }
 
@@ -97,12 +112,18 @@ export class DialogComponent implements OnInit {
       this.categoryAdd = {}
       this.categoryAdd.name = formValues['name'];
       this.categoryAdd.description = formValues['description'];
+      this.categoryAdd.isActive = this.isActive;
     } else {
       this.categoryAdd = {}
       this.categoryAdd.id = this.category.id;
       this.categoryAdd.name = formValues['name'];
       this.categoryAdd.description = formValues['description'];
+      this.categoryAdd.isActive = this.isActive;
     }
+  }
+
+  displaySubCategory(id: number) {
+    this._quickreachService.getSubCategories(id).subscribe(data => { this.subCategory = data; }, error => this.errorMsg = error);
   }
 
 
@@ -113,6 +134,7 @@ export class DialogComponent implements OnInit {
         this.initCategoryForm(true);
         this.onNoClick();
         this.openSnackBar(`Succcessfully ${this.mode}d the Category!`, '');
+        alert('added');
       }, error => { this.errorMsg = error });
     console.log(this.categoryForm.value)
   }
@@ -124,6 +146,7 @@ export class DialogComponent implements OnInit {
         this.initCategoryForm(true);
         this.onNoClick();
         this.openSnackBar(`Succcessfully ${this.mode}d the Category!`, '');
+        alert('updated');
         this.mode = "Create";
       }, error => { this.errorMsg = error });
 
@@ -131,11 +154,16 @@ export class DialogComponent implements OnInit {
 
 
   deleteCategory() {
-    this._quickreachService.deleteCategory(this.category.id)
-      .subscribe(data => {
-        this.onNoClick();
-        this.openSnackBar(`Succcessfully ${this.mode}d the Category!`, '');
-      }, error => { this.errorMsg = error });
+    if (confirm('Do you want to delete this product?')) {
+      this._quickreachService.deleteCategory(this.category.id)
+        .subscribe(data => {
+          alert('deleted');
+          this.onNoClick();
+          this.openSnackBar(`Succcessfully ${this.mode}d the Category!`, '');
+        }, error => { this.errorMsg = error });
+    } else {
+      alert('canceled deletion')
+    }
   }
 
   submitForm() {

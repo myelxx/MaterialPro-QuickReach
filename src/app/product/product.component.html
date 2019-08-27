@@ -11,7 +11,7 @@
         </mat-form-field>
       </div>
       <div fxFlex>
-        <button id="add_product" color="primary" matTooltip="Add Product" mat-icon-button (click)="openDialog('Add',{})"
+        <button id="add_product" color="primary" matTooltip="Add Product" mat-icon-button (click)="openDialog('Create',{})"
           fxFlex.gt-lg="5" fxFlex.gt-xs="5" fxFlex="5">
           <i class="fa fa-plus-circle fa-3x"></i>
         </button>
@@ -68,10 +68,10 @@
         <td class="action" mat-cell *matCellDef="let element" class="action-link">
           <!-- <a (click)="openDialog('Update',element)">Edit</a> |
                 <a (click)="openDialog('Delete',element)">Delete</a> -->
-          <button color="accent" mat-icon-button matTooltip="Edit products" (click)="openDialog('Update',element)">
+          <button color="accent"  mat-mini-fab color="primary"  matTooltip="Edit products" (click)="openDialog('Update',element)">
             <i class="fa fa-edit fa-2x"></i>
           </button>
-          <button color="warn" mat-icon-button matTooltip="Delete products" (click)="openDialog('Delete',element)">
+          <button color="warn"  mat-mini-fab color="primary" matTooltip="Delete products" (click)="openDialog('Delete',element)">
             <i class="fa fa-trash fa-2x"></i>
           </button>
         </td>
