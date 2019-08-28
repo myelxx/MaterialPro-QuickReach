@@ -18,9 +18,21 @@ export class CategoryService {
       catchError(this.errorHandler));
    
   }
+  getSpecificCategory(id: number): Observable<any[]> {
+    return this.http.get<any[]>(this.url+'/'+id).pipe(
+      catchError(this.errorHandler));
+   
+  }
   
   getSubCategories(id: number): Observable<any[]> {
     return this.http.get<any[]>(this.url+'/'+id+'/sub').pipe(
+      catchError(this.errorHandler));
+  }
+
+  addSubCategory(parent_id: number, item: any): Observable<any[]> {
+    console.log(`hi {0}`, item)
+    console.log(`parent {0}`, parent_id)
+    return this.http.put<any[]>(this.url+'/'+parent_id+'/sub', item).pipe(
       catchError(this.errorHandler));
   }
 
@@ -39,6 +51,15 @@ export class CategoryService {
     console.log(id)
 
     return this.http.delete<any[]>(this.url+'/'+id).pipe(
+      catchError(this.errorHandler));
+   
+  }
+
+  deleteSubCategory(item: any): Observable<any[]> {
+    console.log(`child {0}`, item)
+    console.log(`child {0}`, item.childCategoryID)
+    console.log(`parent {0}`, item.parentCategoryID)
+    return this.http.put<any[]>(this.url+'/'+item.parentCategoryID+'/sub/'+item.childCategoryID, {}).pipe(
       catchError(this.errorHandler));
    
   }

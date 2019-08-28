@@ -17,13 +17,15 @@ export class DialogComponent implements OnInit {
   local_data: any;
   action: string;
 
+  //hold sub category to remove
+  subCategoryToRemove: any;
+
   subCategoryForm: FormGroup;
   categoryForm: FormGroup;
   categoryAdd: any = {};
-
-  subCategory: any = [];
+  subCategory: any = {};
   categoryList: string[] = ['Shoes', 'Shirt', 'Skirt', "Women's Wear", "Men's Wear", 'School Supplies'];
-
+  displayedSubCategory: any = [];
   productForm: FormGroup;
   productAdd: any = {};
   isVisible: number = 1;
@@ -34,28 +36,29 @@ export class DialogComponent implements OnInit {
 
   searchString: string = "";
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, private _snackBar: MatSnackBar,
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogComponent>, private _snackBar: MatSnackBar,
     private _quickreachService: CategoryService, private fb: FormBuilder, @Optional() @Inject(MAT_DIALOG_DATA) public category: any) {
-    console.log(this.category);
     this.local_data = { ...category };
     this.mode = this.local_data.action;
 
-                                                       
-    if (this.local_data.action == "Create") {
+    if (this.category.action == "Create") {
       this.initCategoryForm(true);
       this.isVisibleId = false;
       this.isActive = false;
-    } else if (this.local_data.action == "AddSub") {
-      this.initCategoryForm(true);
+    } else if (this.category.action == "AddSub") {
+      this.initSubCategoryForm();
       this.isVisible = 4;
-    } else if (this.local_data.action == "Update") {
+    } else if (this.category.action == "Update") {
       this.initCategoryForm(false);
       this.isActive = this.category.isActive;
-    } else if (this.local_data.action == "View Sub") {
+    } else if (this.category.action == "View Sub") {
       this.isVisible = 3;
       this.displaySubCategory(category.id);
-    } else if (this.local_data.action == "Delete") {
+    } else if (this.category.action == "Delete") {
       this.isVisible = 2;
+    } else if (this.category.action == "DeleteSub") {
+      this.isVisible = 5;
+      this.subCategoryToRemove = this.category;
     } else {
       this.initCategoryForm(true);
     }
@@ -105,6 +108,12 @@ export class DialogComponent implements OnInit {
     }
   }
 
+  initSubCategoryForm() {
+    this.subCategoryForm = this.fb.group({
+      sub_id: ['']
+    });
+  }
+
   assignCategoryFormValue(isNew: boolean) {
     const formValues = Object.assign({}, this.categoryForm.value);
 
@@ -122,10 +131,17 @@ export class DialogComponent implements OnInit {
     }
   }
 
-  displaySubCategory(id: number) {
-    this._quickreachService.getSubCategories(id).subscribe(data => { this.subCategory = data; }, error => this.errorMsg = error);
+  assignSubCategoryFormValue() {
+    const formValues = Object.assign({}, this.subCategoryForm.value);
+    this.subCategory = {}
+    this.subCategory.id = Number(formValues['sub_id']);
+    this.subCategory.name = "null";
+    this.subCategory.description = "null";
   }
 
+  displaySubCategory(id: number) {
+    this._quickreachService.getSubCategories(id).subscribe(data => { this.displayedSubCategory = data; }, error => this.errorMsg = error);
+  }
 
   addCategory() {
     this.assignCategoryFormValue(true)
@@ -137,6 +153,22 @@ export class DialogComponent implements OnInit {
         alert('added');
       }, error => { this.errorMsg = error });
     console.log(this.categoryForm.value)
+  }
+
+  addSubCategory() {
+    this.assignSubCategoryFormValue()
+    this._quickreachService.getSpecificCategory(this.subCategory.id)
+      .subscribe(data => {
+        // console.log(data)
+        this.subCategory = data;
+        // this.onNoClick();
+      }, error => { this.errorMsg = error });
+
+    this._quickreachService.addSubCategory(this.category.id, this.subCategory)
+      .subscribe(data => {
+        this.initSubCategoryForm();
+        this.onNoClick();
+      }, error => { this.errorMsg = error });
   }
 
   updateCategory() {
@@ -166,12 +198,42 @@ export class DialogComponent implements OnInit {
     }
   }
 
+  deleteSubCategory() {
+      console.log(`this is`, this.subCategoryToRemove)
+      this._quickreachService.deleteSubCategory(this.subCategoryToRemove)
+        .subscribe(data => {
+          this.onNoClick();
+          this.openSnackBar(`Succcessfully ${this.mode}d the Sub Category!`, '');
+        }, error => { this.errorMsg = error });
+  }
+
   submitForm() {
     if (this.mode == "Create") {
       this.addCategory()
-    } else {
+    } else if (this.mode == "Update") {
       this.updateCategory()
+    } else if (this.mode == "AddSub") {
+      this.addSubCategory()
+    } else {
     }
+  }
+
+  //dialog for remove sub category
+  openDialog(action, obj) {
+    obj.action = action;
+    var parent = this.category.id;
+    console.log(`sub to delete {0}`, obj)
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '50%',
+      data: obj
+    });
+
+    //this.onNoClick();
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.onNoClick();
+    });
   }
 
 }

@@ -45,7 +45,7 @@
 </div>
 
 <div class="example-container" *ngIf="isVisible==2">
-  <h5> Do you want to delete <strong> {{product.name}} </strong>? </h5>
+  <h5> Do you want to delete <strong> {{category.name}} </strong>? </h5>
   <div fxLayout="row" fxLayoutWrap="wrap">
     <div class="row" fxFlex>
       <button (click)="deleteCategory()" mat-flat-button color="primary" fxFlex>Yes</button>
@@ -56,49 +56,80 @@
   </div>
 </div>
 
-<div class="example-container" *ngIf="isVisible==3">
-  <mat-list>
-    <div *ngFor="let t of subCategory">
-      <mat-list-item>
-        {{ t.childCategoryID }}
-      </mat-list-item>
-      <mat-divider></mat-divider>
-    </div>
-  </mat-list>
-</div>
-
-<div *ngIf="isVisible==4">
-  <div fxLayout="row" fxLayoutWrap="wrap">
-    <div fxFlex.gt-lg="100" fxFlex.gt-xs="100" fxFlex="100">
-      <div class="row" fxFlex="5"></div>
-      <div class="row" fxFlex="43">
-        <form [formGroup]="subCategoryForm" (ngSubmit)="submitForm()">
-          <mat-form-field>
-            <input matInput formControlName="sub_id" placeholder="Enter Category ID">
-          </mat-form-field>
-        </form>
+<div class="example-container" *ngIf="isVisible==5">
+    <h5> Do you want to delete <strong> {{category.name}} </strong> as sub category? </h5>
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div class="row" fxFlex>
+        <button (click)="deleteSubCategory()" mat-flat-button color="primary" fxFlex>Yes</button>
       </div>
-      <div class="row" fxFlex></div>
-      <div class="row" fxFlex="43">
-        Status: &nbsp; <strong>{{status}}</strong>
+      <div class="row" fxFlex>
+        <button class="btn" (click)="onNoClick()" mat-flat-button color="">Cancel</button>
       </div>
     </div>
   </div>
+  
 
+<div class="example-container" *ngIf="isVisible==3">
+  <mat-list>
+    <div *ngIf="displayedSubCategory.length > 0; else no_subcategory">
+      <div *ngFor="let sub of displayedSubCategory">
+        <mat-list-item>
+          <div class="row" fxFlex> {{ sub.childName }}</div>
+          <div class="row" fxFlex="10" flexAlign="end">
+            <button color="warn" mat-mini-fab color="primary" matTooltip="Remove Sub Category"
+              (click)="openDialog('DeleteSub',sub)">
+              <i class="fa fa-trash fa-2x"></i>
+            </button>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+
+    <ng-template #no_subcategory>
+      No sub category for this category
+    </ng-template>
+
+  </mat-list>
+</div>
+
+<form [formGroup]="subCategoryForm" (ngSubmit)="submitForm()">
+  <div *ngIf="isVisible==4">
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div fxFlex.gt-lg="100" fxFlex.gt-xs="100" fxFlex="100">
+        <div class="row" fxFlex="5"></div>
+        <div class="row" fxFlex="50">
+          <mat-form-field>
+            <input matInput formControlName="sub_id" placeholder="Enter Category ID">
+          </mat-form-field>
+        </div>
+        <div class="row" fxFlex="10"></div>
+        <div class="row" fxFlex flexAlign="end">
+          <div>
+            <button type="submit" mat-flat-button color="primary" fxFlex>{{mode}}</button>
+          </div>
+        </div>
+        <!-- <div class="row" fxFlex="43">
+        Status: &nbsp; <strong>{{status}}</strong>
+      </div> -->
+      </div>
+    </div>
+    <!-- 
   <mat-form-field>
     <input matInput placeholder="Name" #name>
   </mat-form-field>
 
   <mat-form-field>
     <textarea matInput placeholder="Desciption"></textarea>
-  </mat-form-field>
+  </mat-form-field> -->
 
-  <div fxLayout="row" fxLayoutWrap="wrap">
+    <!-- <div fxLayout="row" fxLayoutWrap="wrap">
     <div class="row" fxFlex>
       <button type="submit" mat-flat-button color="primary" fxFlex>{{mode}}</button>
     </div>
     <div class="row" fxFlex>
       <button class="btn" (click)="onNoClick()" mat-flat-button color="">Cancel</button>
     </div>
+  </div> -->
   </div>
-</div>
+</form>
